@@ -78,6 +78,47 @@ body {
 }
 .pulse-soft { animation: softPulse 2.5s ease-in-out infinite; }
 
+/* ── TESTIMONIAL MARQUEE — scroll horizontal infinito ──────────────── */
+.testimonial-marquee {
+  animation: testimonialMarquee 50s linear infinite;
+  will-change: transform;
+}
+@keyframes testimonialMarquee {
+  /* Avanza hasta el punto donde la 2da copia coincide visualmente con la 1ra */
+  to { transform: translateX(calc(-50% - 0.625rem)); }
+}
+
+/* Bordes desvanecidos para que las cards entren/salgan suavemente */
+.testimonial-marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+/* Pausa en hover (group del wrapper) */
+.group:hover .testimonial-marquee {
+  animation-play-state: paused;
+}
+
+/* Util para limitar texto a N líneas */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
