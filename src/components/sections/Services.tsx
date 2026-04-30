@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { services, type Service } from '../../data/services'
 import { useOutsideClick } from '../../hooks/use-outside-click'
@@ -9,16 +10,27 @@ export function Services() {
 
   useOutsideClick(cardRef, () => setActive(null))
 
+  // Body scroll lock iOS-safe: usa position:fixed + top negativo (overflow:hidden no funciona en Safari móvil)
   useEffect(() => {
+    if (!active) return
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setActive(null)
     }
-    if (active) {
-      document.body.style.overflow = 'hidden'
-      window.addEventListener('keydown', onKey)
-    }
+    const scrollY = window.scrollY
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.left = '0'
+    document.body.style.right = '0'
+    document.body.style.width = '100%'
+    window.addEventListener('keydown', onKey)
+
     return () => {
-      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.left = ''
+      document.body.style.right = ''
+      document.body.style.width = ''
+      window.scrollTo(0, scrollY)
       window.removeEventListener('keydown', onKey)
     }
   }, [active])
@@ -118,93 +130,109 @@ export function Services() {
       </div>
 
       {/* ─── EXPANDED MODAL ─── */}
-      <AnimatePresence>
-        {active && (
-          <div className="fixed inset-0 z-200 flex items-center justify-center p-4 pb-24 sm:p-8">
-            <motion.div
-              key="backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="absolute inset-0 bg-black/85 backdrop-blur-md"
-            />
-
-            <motion.div
-              key="card"
-              ref={cardRef}
-              initial={{ opacity: 0, scale: 0.94, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.94, y: 12 }}
-              transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-2xl bg-stone-950 border border-stone-800 rounded-3xl overflow-hidden flex flex-col max-h-[calc(100dvh-8rem)] sm:max-h-[90vh] shadow-2xl shadow-red-950/30"
-            >
-              <button
-                onClick={() => setActive(null)}
-                aria-label="Cerrar"
-                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-red-600 text-white flex items-center justify-center backdrop-blur transition-colors"
+      {/* Modal renderizado vía portal al body — escapa overflow/contain del section */}
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <AnimatePresence>
+            {active && (
+              <motion.div
+                key="modal-root"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-9999 flex items-end sm:items-center justify-center sm:p-6"
+                aria-modal="true"
+                role="dialog"
               >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
+                {/* Backdrop */}
+                <div className="absolute inset-0 bg-black/85 backdrop-blur-md" />
+
+                {/* Modal — bottom sheet mobile, centered card desktop */}
+                <motion.div
+                  ref={cardRef}
+                  initial={{ y: '100%', opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: '100%', opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative w-full sm:max-w-2xl bg-stone-950 border-t sm:border border-stone-800 rounded-t-3xl sm:rounded-3xl overflow-hidden flex flex-col max-h-[88dvh] sm:max-h-[85vh] shadow-2xl shadow-red-950/40"
                 >
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              </button>
+                  {/* Drag handle visible solo mobile */}
+                  <div className="sm:hidden flex justify-center pt-3 pb-1 shrink-0">
+                    <div className="w-10 h-1 bg-white/20 rounded-full" />
+                  </div>
 
-              <div className="relative h-44 sm:h-60 lg:h-72 shrink-0">
-                <img
-                  src={active.image}
-                  alt={active.title}
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-stone-950 via-stone-950/40 to-transparent" />
-                <div className="absolute bottom-4 left-5 right-16 sm:bottom-5 sm:left-6 sm:right-6">
-                  <p className="text-red-400 text-[10px] tracking-[0.32em] uppercase font-semibold mb-1.5 sm:mb-2">
-                    Servicio
-                  </p>
-                  <h3 className="font-playfair text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-tight">
-                    {active.title}
-                  </h3>
-                </div>
-              </div>
+                  <button
+                    onClick={() => setActive(null)}
+                    aria-label="Cerrar"
+                    className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-red-600 text-white flex items-center justify-center backdrop-blur transition-colors"
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    >
+                      <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                  </button>
 
-              <div
-                className="p-5 sm:p-7 lg:p-8 overflow-y-auto overscroll-contain"
-                data-lenis-prevent
-              >
-                <p className="text-white/70 text-[14px] sm:text-[15px] leading-relaxed mb-6 font-light">
-                  {active.details}
-                </p>
+                  <div className="relative h-44 sm:h-60 lg:h-72 shrink-0">
+                    <img
+                      src={active.image}
+                      alt={active.title}
+                      className="w-full h-full object-cover"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-stone-950 via-stone-950/40 to-transparent" />
+                    <div className="absolute bottom-4 left-5 right-16 sm:bottom-5 sm:left-6 sm:right-6">
+                      <p className="text-red-400 text-[10px] tracking-[0.32em] uppercase font-semibold mb-1.5">
+                        Servicio
+                      </p>
+                      <h3 className="font-playfair text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-tight">
+                        {active.title}
+                      </h3>
+                    </div>
+                  </div>
 
-                <div className="border-t border-stone-800 pt-5 sm:pt-6">
-                  <p className="text-red-400 text-[10px] tracking-[0.32em] uppercase font-semibold mb-3.5">
-                    Incluye
-                  </p>
-                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 sm:gap-y-3">
-                    {active.features.map((f) => (
-                      <li
-                        key={f}
-                        className="flex items-start gap-2.5 text-white/85 text-sm"
-                      >
-                        <span className="text-red-500 mt-0.5 font-bold">›</span>
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+                  <div
+                    className="p-5 sm:p-7 lg:p-8 overflow-y-auto overscroll-contain min-h-0"
+                    data-lenis-prevent
+                  >
+                    <p className="text-white/75 text-[14px] sm:text-[15px] leading-relaxed mb-6 font-light">
+                      {active.details}
+                    </p>
+
+                    <div className="border-t border-stone-800 pt-5 sm:pt-6">
+                      <p className="text-red-400 text-[10px] tracking-[0.32em] uppercase font-semibold mb-3.5">
+                        Incluye
+                      </p>
+                      <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 sm:gap-y-3">
+                        {active.features.map((f) => (
+                          <li
+                            key={f}
+                            className="flex items-start gap-2.5 text-white/85 text-sm"
+                          >
+                            <span className="text-red-500 mt-0.5 font-bold">›</span>
+                            <span>{f}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Padding-bottom extra para que el contenido no quede pegado al borde */}
+                    <div className="h-2 sm:h-0" />
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </section>
   )
 }
