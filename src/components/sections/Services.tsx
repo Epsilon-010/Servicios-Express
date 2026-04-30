@@ -120,7 +120,7 @@ export function Services() {
       {/* ─── EXPANDED MODAL ─── */}
       <AnimatePresence>
         {active && (
-          <div className="fixed inset-0 z-200 flex items-center justify-center p-4 sm:p-8">
+          <div className="fixed inset-0 z-200 flex items-center justify-center p-4 pb-24 sm:p-8">
             <motion.div
               key="backdrop"
               initial={{ opacity: 0 }}
@@ -133,11 +133,11 @@ export function Services() {
             <motion.div
               key="card"
               ref={cardRef}
-              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              initial={{ opacity: 0, scale: 0.94, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 20 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-2xl bg-stone-950 border border-stone-800 rounded-3xl overflow-hidden flex flex-col max-h-[90vh] shadow-2xl shadow-red-950/30"
+              exit={{ opacity: 0, scale: 0.94, y: 12 }}
+              transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 w-full max-w-2xl bg-stone-950 border border-stone-800 rounded-3xl overflow-hidden flex flex-col max-h-[calc(100dvh-8rem)] sm:max-h-[90vh] shadow-2xl shadow-red-950/30"
             >
               <button
                 onClick={() => setActive(null)}
@@ -157,7 +157,7 @@ export function Services() {
                 </svg>
               </button>
 
-              <div className="relative h-60 sm:h-72 shrink-0">
+              <div className="relative h-44 sm:h-60 lg:h-72 shrink-0">
                 <img
                   src={active.image}
                   alt={active.title}
@@ -166,26 +166,29 @@ export function Services() {
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-stone-950 via-stone-950/40 to-transparent" />
-                <div className="absolute bottom-5 left-6 right-6">
-                  <p className="text-red-400 text-[10px] tracking-[0.32em] uppercase font-semibold mb-2">
+                <div className="absolute bottom-4 left-5 right-16 sm:bottom-5 sm:left-6 sm:right-6">
+                  <p className="text-red-400 text-[10px] tracking-[0.32em] uppercase font-semibold mb-1.5 sm:mb-2">
                     Servicio
                   </p>
-                  <h3 className="font-playfair text-3xl sm:text-4xl font-medium tracking-tight text-white">
+                  <h3 className="font-playfair text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-tight">
                     {active.title}
                   </h3>
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 overflow-y-auto">
-                <p className="text-white/70 text-[15px] leading-relaxed mb-7 font-light">
+              <div
+                className="p-5 sm:p-7 lg:p-8 overflow-y-auto overscroll-contain"
+                data-lenis-prevent
+              >
+                <p className="text-white/70 text-[14px] sm:text-[15px] leading-relaxed mb-6 font-light">
                   {active.details}
                 </p>
 
-                <div className="border-t border-stone-800 pt-6">
-                  <p className="text-red-400 text-[10px] tracking-[0.32em] uppercase font-semibold mb-4">
+                <div className="border-t border-stone-800 pt-5 sm:pt-6">
+                  <p className="text-red-400 text-[10px] tracking-[0.32em] uppercase font-semibold mb-3.5">
                     Incluye
                   </p>
-                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 sm:gap-y-3">
                     {active.features.map((f) => (
                       <li
                         key={f}

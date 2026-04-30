@@ -3,7 +3,8 @@ import { StarIcon } from '../icons'
 
 export function Testimonials() {
   const featured = testimonials[0]
-  const rest = testimonials.slice(1)
+  // Solo 3 más en el grid (4 total) — evita saturar mobile
+  const rest = testimonials.slice(1, 4)
 
   return (
     <section className="relative py-20 sm:py-28 lg:py-44 bg-zinc-950 text-white overflow-hidden">
