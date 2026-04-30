@@ -1,0 +1,398 @@
+@import "tailwindcss";
+
+html { scroll-behavior: smooth; }
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: #000000;
+  color: #ffffff;
+}
+
+/* En mobile, dejamos espacio al MobileCTA fijo abajo */
+@media (max-width: 639px) {
+  body {
+    padding-bottom: 5rem;
+  }
+}
+
+
+/* ── SCROLL REVEAL — CSS transitions puras (cero JS por frame) ───── */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
+  will-change: opacity, transform;
+}
+[data-animate="fade-left"]    { transform: translateX(-32px); }
+[data-animate="fade-right"]   { transform: translateX(32px); }
+[data-animate="scale-in"]     { transform: scale(0.94) translateY(16px); }
+[data-animate="rise"]         { transform: translateY(60px); }
+[data-animate="zoom-in"]      { transform: scale(0.85); }
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* ── Hover lift universal en cards (transform-only, GPU) ─────────── */
+.card-lift {
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+  will-change: transform;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Underline draw on section titles ────────────────────────────── */
+.title-underline {
+  display: inline-block;
+  position: relative;
+}
+.title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ef4444, transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+[data-animate].is-visible .title-underline::after {
+  transform: scaleX(1);
+}
+
+/* ── Soft pulse para indicadores live ────────────────────────────── */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.pulse-soft { animation: softPulse 2.5s ease-in-out infinite; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── FONDOS ELEGANTES ───────────────────────────────────────── */
+/* Cream / museo blanco */
+.bg-museum {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, #fef2f240 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, #fee2e240 0%, transparent 55%),
+    #FAFAF9;
+}
+
+/* contain: paint le dice al browser que paint y layout del hero
+   no afectan al resto del documento → puede skipear repaint en scroll */
+.hero-section {
+  contain: paint;
+}
+
+/* ── NIEVE CSS — copos cayendo con animación de transform pura ───── */
+.hero-flake {
+  position: absolute;
+  top: -10px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  animation: snowFall linear infinite;
+  filter: blur(0.5px);
+}
+@keyframes snowFall {
+  0% {
+    transform: translate3d(0, -10vh, 0);
+  }
+  100% {
+    transform: translate3d(calc(var(--drift, 1) * 40px), 110vh, 0);
+  }
+}
+
+/* Faint moonlit horizon — barely-there cool glow at the bottom */
+.hero-horizon {
+  background: radial-gradient(
+    ellipse 70% 100% at 50% 100%,
+    rgba(255, 255, 255, 0.04) 0%,
+    transparent 70%
+  );
+}
+
+
+/* ── TUBO NEÓN — núcleo brillante + halo TIGHT alrededor ───────────── */
+.hero-spot {
+  pointer-events: none;
+}
+
+/* Halo apretado alrededor del tubo (no nube grande) */
+.hero-spot-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  height: 22px;
+  background: radial-gradient(
+    ellipse 60% 100% at center,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.22) 35%,
+    rgba(255, 255, 255, 0.06) 65%,
+    transparent 92%
+  );
+  filter: blur(5px);
+  mix-blend-mode: screen;
+}
+
+/* Glow medio — extiende el filo del tubo */
+.hero-spot-bar-soft {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    transparent 5%,
+    rgba(255, 255, 255, 0.8) 18%,
+    #ffffff 50%,
+    rgba(255, 255, 255, 0.8) 82%,
+    transparent 95%
+  );
+  border-radius: 2px;
+  filter: blur(1.5px);
+  mix-blend-mode: screen;
+}
+
+/* Núcleo del tubo — 1px ultra brillante con box-shadow tipo neón */
+.hero-spot-bar-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 4%,
+    #ffffff 18%,
+    #ffffff 82%,
+    transparent 96%
+  );
+  box-shadow:
+    0 0 3px #ffffff,
+    0 0 8px #ffffff,
+    0 0 16px rgba(255, 255, 255, 0.85),
+    0 0 28px rgba(255, 255, 255, 0.4);
+}
+
+/* Neblina — un solo elemento con 2 gradientes stackeados (1 capa GPU vs 2) */
+.hero-spot-mist {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240%;
+  height: 15rem;
+  background:
+    /* núcleo brillante (antes era mist-inner) */
+    radial-gradient(
+      ellipse 22% 60% at 50% 0%,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.22) 25%,
+      transparent 70%
+    ),
+    /* spread externo */
+    radial-gradient(
+      ellipse 32% 80% at 50% 0%,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0.1) 30%,
+      transparent 80%
+    );
+  filter: blur(14px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* HEADLIGHT — bulb + core combinados (multi-stop gradient en 1 capa) */
+.hero-headlight {
+  width: 4.5rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    /* core puro al centro */
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.95) 8%,
+    /* bulb halo */
+    rgba(235, 245, 255, 0.85) 18%,
+    rgba(190, 215, 255, 0.55) 38%,
+    rgba(130, 175, 255, 0.22) 60%,
+    transparent 95%
+  );
+  filter: blur(1.5px);
+  mix-blend-mode: screen;
+  opacity: 0;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+/* PERSPECTIVE 3D CONCRETE FLOOR — slab joints + grainy texture (siempre tenue) */
+.hero-ground-floor {
+  width: 220%;
+  height: 28rem;
+  left: -60%;
+  top: 70%;
+  transform: perspective(500px) rotateX(72deg);
+  transform-origin: 50% 0%;
+  background-color: transparent;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 1px, transparent 1.5px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 128px 128px, 128px 128px, 220px 220px;
+  background-repeat: repeat, repeat, repeat;
+  -webkit-mask-image: radial-gradient(ellipse 50% 100% at 50% 0%, black 25%, transparent 90%);
+          mask-image: radial-gradient(ellipse 50% 100% at 50% 0%, black 25%, transparent 90%);
+  opacity: 0.22;
+  pointer-events: none;
+  will-change: opacity, transform;
+  mix-blend-mode: screen;
+}
+
+
+/* GROUND GLOW combinado: 3 gradientes apilados en 1 capa GPU
+   (antes eran .hero-ground-spread + .hero-ground-pool + .hero-ground-flare = 3 capas) */
+.hero-ground-glow {
+  width: 180%;
+  height: 18rem;
+  left: -40%;
+  top: calc(100% - 8rem);
+  background:
+    /* core flare (más intenso, centro) */
+    radial-gradient(
+      ellipse 14% 30% at 50% 25%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.5) 30%,
+      transparent 65%
+    ),
+    /* pool central (mediano) */
+    radial-gradient(
+      ellipse 25% 50% at 50% 28%,
+      rgba(235, 245, 255, 0.7) 0%,
+      rgba(190, 220, 255, 0.3) 40%,
+      transparent 80%
+    ),
+    /* spread amplio */
+    radial-gradient(
+      ellipse 50% 65% at 50% 0%,
+      rgba(220, 235, 255, 0.4) 0%,
+      rgba(180, 210, 255, 0.12) 35%,
+      transparent 75%
+    );
+  filter: blur(14px);
+  mix-blend-mode: screen;
+  opacity: 0;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+/* Car frame — fade ALL edges into the black bg seamlessly (same as video did) */
+.hero-car-frame {
+  -webkit-mask-image: radial-gradient(
+    ellipse 95% 95% at center,
+    black 50%,
+    transparent 100%
+  );
+          mask-image: radial-gradient(
+    ellipse 95% 95% at center,
+    black 50%,
+    transparent 100%
+  );
+}
+
+/* Rojo elegante para sección destacada (CTA final) */
+.bg-elegant-red {
+  background:
+    radial-gradient(ellipse 100% 60% at 20% 0%, #dc262680 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 100% 100%, #7f1d1d 0%, transparent 70%),
+    #991b1b;
+}
+
+/* ── GRADIENT TEXT ─────────────────────────────────────────── */
+.text-gradient-red {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #7f1d1d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-red-light {
+  background: linear-gradient(135deg, #fecaca 0%, #fca5a5 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── PULSE / RING / STAR ────────────────────────────────────── */
+.animate-pulse-slow { animation: pulse 5s cubic-bezier(.4,0,.6,1) infinite; }
+
+.icon-ring { animation: ring 6s ease-in-out infinite; }
+@keyframes ring {
+  0%, 80%, 100% { transform: rotate(0); }
+  82% { transform: rotate(-15deg); }
+  86% { transform: rotate(15deg); }
+  90% { transform: rotate(-8deg); }
+  94% { transform: rotate(8deg); }
+}
+
+.star-pop { animation: starPop .4s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes starPop {
+  from { transform: scale(0) rotate(-20deg); }
+  to   { transform: scale(1) rotate(0); }
+}
+
+/* ── NAVBAR ─────────────────────────────────────────────────── */
+.nav-default {
+  background: rgba(0, 0, 0, 0.55);
+}
+.nav-default .nav-brand { color: #ffffff; }
+.nav-default .nav-link  { color: rgba(255, 255, 255, 0.65); }
+.nav-default .nav-link:hover { color: #fca5a5; }
+.nav-default .nav-hairline {
+  background: linear-gradient(to right, transparent, rgba(220, 38, 38, 0.35), transparent);
+}
+
+.nav-scrolled {
+  background: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: 0 1px 30px rgba(127, 29, 29, 0.06) !important;
+}
+.nav-scrolled .nav-brand { color: #1c1917; }
+.nav-scrolled .nav-link  { color: #57534e; }
+.nav-scrolled .nav-link:hover { color: #991b1b; }
+.nav-scrolled .nav-hairline {
+  background: linear-gradient(to right, transparent, rgba(127, 29, 29, 0.18), transparent);
+}
+
+/* ── TIPOGRAFÍA ─────────────────────────────────────────────── */
+.font-playfair { font-family: 'Playfair Display', serif; }
+
+/* ── DECORACIÓN ─────────────────────────────────────────────── */
+.divider-line {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(127,29,29,0.2), transparent);
+}
+.divider-line-light {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+}
