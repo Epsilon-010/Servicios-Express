@@ -1,9 +1,13 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 
+// Singleton accesible desde otros módulos (Services modal lo usa para stop/start)
+let lenisInstance: Lenis | null = null
+
+export const getLenis = () => lenisInstance
+
 /**
- * Smooth scroll global con Lenis (10KB).
- * Respeta `prefers-reduced-motion`.
+ * Smooth scroll global con Lenis (~10KB).
  */
 export function useLenis() {
   useEffect(() => {
@@ -11,13 +15,15 @@ export function useLenis() {
     if (reduce) return
 
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 0.85,
+      wheelMultiplier: 1,
       touchMultiplier: 1.5,
-      lerp: 0.08,
+      lerp: 0.1,
     })
+
+    lenisInstance = lenis
 
     let rafId = 0
     const raf = (time: number) => {
@@ -29,6 +35,7 @@ export function useLenis() {
     return () => {
       cancelAnimationFrame(rafId)
       lenis.destroy()
+      lenisInstance = null
     }
   }, [])
 }

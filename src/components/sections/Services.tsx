@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { services, type Service } from '../../data/services'
+import { getLenis } from '../../hooks/useLenis'
 import { useOutsideClick } from '../../hooks/use-outside-click'
 
 export function Services() {
@@ -10,27 +11,32 @@ export function Services() {
 
   useOutsideClick(cardRef, () => setActive(null))
 
-  // Body scroll lock iOS-safe: usa position:fixed + top negativo (overflow:hidden no funciona en Safari móvil)
+  // Scroll lock: pausa Lenis + overflow:hidden (sin position:fixed que causaba jumps al cerrar)
   useEffect(() => {
     if (!active) return
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setActive(null)
     }
-    const scrollY = window.scrollY
-    document.body.style.position = 'fixed'
-    document.body.style.top = `-${scrollY}px`
-    document.body.style.left = '0'
-    document.body.style.right = '0'
-    document.body.style.width = '100%'
+
+    const lenis = getLenis()
+    lenis?.stop()
+
+    const html = document.documentElement
+    const body = document.body
+    // Compensar ancho de scrollbar para evitar layout shift en desktop
+    const scrollbarW = window.innerWidth - html.clientWidth
+    const prevHtmlOverflow = html.style.overflow
+    const prevBodyPaddingRight = body.style.paddingRight
+
+    html.style.overflow = 'hidden'
+    if (scrollbarW > 0) body.style.paddingRight = `${scrollbarW}px`
+
     window.addEventListener('keydown', onKey)
 
     return () => {
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.left = ''
-      document.body.style.right = ''
-      document.body.style.width = ''
-      window.scrollTo(0, scrollY)
+      html.style.overflow = prevHtmlOverflow
+      body.style.paddingRight = prevBodyPaddingRight
+      lenis?.start()
       window.removeEventListener('keydown', onKey)
     }
   }, [active])
@@ -39,7 +45,6 @@ export function Services() {
     <section
       id="servicios"
       className="relative py-20 sm:py-28 lg:py-44 bg-stone-950 text-white overflow-hidden"
-      style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 1400px' }}
     >
       {/* Subtle red ambient at edges */}
       <div className="pointer-events-none absolute -top-40 -right-32 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[160px]" />
@@ -151,11 +156,11 @@ export function Services() {
                 {/* Modal — bottom sheet mobile, centered card desktop */}
                 <motion.div
                   ref={cardRef}
-                  initial={{ y: '100%', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: '100%', opacity: 0 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative w-full sm:max-w-2xl bg-stone-950 border-t sm:border border-stone-800 rounded-t-3xl sm:rounded-3xl overflow-hidden flex flex-col max-h-[88dvh] sm:max-h-[85vh] shadow-2xl shadow-red-950/40"
+                  initial={{ y: '100%' }}
+                  animate={{ y: 0 }}
+                  exit={{ y: '100%' }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative w-full sm:max-w-2xl bg-stone-950 border-t sm:border border-stone-800 rounded-t-3xl sm:rounded-3xl overflow-hidden flex flex-col h-[92dvh] sm:h-auto sm:max-h-[85vh] shadow-2xl shadow-red-950/50"
                 >
                   {/* Drag handle visible solo mobile */}
                   <div className="sm:hidden flex justify-center pt-3 pb-1 shrink-0">
