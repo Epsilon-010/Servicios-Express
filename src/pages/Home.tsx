@@ -19,6 +19,9 @@ import { useScrollAnimations } from '../hooks/useScrollAnimations'
 const Services = lazy(() =>
   import('../components/sections/Services').then((m) => ({ default: m.Services })),
 )
+const Slogan = lazy(() =>
+  import('../components/sections/Slogan').then((m) => ({ default: m.Slogan })),
+)
 const Contact = lazy(() =>
   import('../components/sections/Contact').then((m) => ({ default: m.Contact })),
 )
@@ -56,6 +59,7 @@ export default function Home() {
       <Hero />
       <Suspense fallback={<SectionFallback />}>
         <Services />
+        <Slogan />
         <Contact />
         <Testimonials />
         <Location />
