@@ -1,108 +1,22 @@
-<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo negro con bordes redondeados -->
+  <rect width="192" height="192" rx="32" fill="#0c0a09"/>
+
+  <!-- Halo rojo radial central -->
   <defs>
-    <radialGradient id="bg" cx="50%" cy="50%" r="65%">
-      <stop offset="0%" stop-color="#1c1917"/>
-      <stop offset="60%" stop-color="#0c0a09"/>
-      <stop offset="100%" stop-color="#000000"/>
-    </radialGradient>
-    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.35"/>
-      <stop offset="60%" stop-color="#ef4444" stop-opacity="0.10"/>
+    <radialGradient id="haloFav" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
     </radialGradient>
   </defs>
+  <rect width="192" height="192" rx="32" fill="url(#haloFav)"/>
 
-  <!-- Fondo negro -->
-  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Anillo rojo (echoes the OG) -->
+  <circle cx="96" cy="96" r="72" fill="none" stroke="#ef4444" stroke-width="3" opacity="0.7"/>
 
-  <!-- Halo rojo central -->
-  <ellipse cx="600" cy="315" rx="380" ry="300" fill="url(#halo)"/>
+  <!-- Letra "Q" estilizada (Quevedo) en blanco italic -->
+  <text x="96" y="118" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700" font-style="italic" fill="#ffffff" text-anchor="middle">Q</text>
 
-  <!-- Anillos rojos del logo (uno fuera, uno dentro del texto curvo) -->
-  <circle cx="600" cy="315" r="262" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
-  <circle cx="600" cy="315" r="218" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
-
-  <!-- Texto curvo -->
-  <text x="600.00" y="75.00" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(0.00 600.00 75.00)">A</text>
-  <text x="620.08" y="75.84" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(4.80 620.08 75.84)">U</text>
-  <text x="640.02" y="78.36" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(9.60 640.02 78.36)">T</text>
-  <text x="659.69" y="82.54" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(14.40 659.69 82.54)">O</text>
-  <text x="678.93" y="88.35" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(19.20 678.93 88.35)">S</text>
-  <text x="697.62" y="95.75" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(24.00 697.62 95.75)">E</text>
-  <text x="715.62" y="104.69" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(28.80 715.62 104.69)">R</text>
-  <text x="732.81" y="115.10" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(33.60 732.81 115.10)">V</text>
-  <text x="749.08" y="126.91" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(38.40 749.08 126.91)">I</text>
-  <text x="764.29" y="140.05" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(43.20 764.29 140.05)">C</text>
-  <text x="778.35" y="154.41" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(48.00 778.35 154.41)">I</text>
-  <text x="791.17" y="169.90" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(52.80 791.17 169.90)">O</text>
-  <text x="802.64" y="186.40" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(57.60 802.64 186.40)"> </text>
-  <text x="812.69" y="203.81" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(62.40 812.69 203.81)">E</text>
-  <text x="821.25" y="222.00" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(67.20 821.25 222.00)">X</text>
-  <text x="828.25" y="240.84" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(72.00 828.25 240.84)">P</text>
-  <text x="833.66" y="260.20" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(76.80 833.66 260.20)">R</text>
-  <text x="837.43" y="279.94" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(81.60 837.43 279.94)">E</text>
-  <text x="839.53" y="299.93" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(86.40 839.53 299.93)">S</text>
-  <text x="839.95" y="320.03" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(91.20 839.95 320.03)">S</text>
-  <text x="838.69" y="340.09" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(96.00 838.69 340.09)"> </text>
-  <text x="835.75" y="359.97" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(100.80 835.75 359.97)"> </text>
-  <text x="831.16" y="379.54" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(105.60 831.16 379.54)">·</text>
-  <text x="824.95" y="398.66" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(110.40 824.95 398.66)"> </text>
-  <text x="817.16" y="417.19" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(115.20 817.16 417.19)"> </text>
-  <text x="807.85" y="435.00" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(120.00 807.85 435.00)">A</text>
-  <text x="797.08" y="451.97" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(124.80 797.08 451.97)">U</text>
-  <text x="784.92" y="467.98" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(129.60 784.92 467.98)">T</text>
-  <text x="771.47" y="482.92" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(134.40 771.47 482.92)">O</text>
-  <text x="756.82" y="496.68" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(139.20 756.82 496.68)">S</text>
-  <text x="741.07" y="509.16" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(144.00 741.07 509.16)">E</text>
-  <text x="724.33" y="520.29" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(148.80 724.33 520.29)">R</text>
-  <text x="706.71" y="529.97" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(153.60 706.71 529.97)">V</text>
-  <text x="688.35" y="538.15" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(158.40 688.35 538.15)">I</text>
-  <text x="669.37" y="544.76" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(163.20 669.37 544.76)">C</text>
-  <text x="649.90" y="549.76" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(168.00 649.90 549.76)">I</text>
-  <text x="630.08" y="553.11" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(172.80 630.08 553.11)">O</text>
-  <text x="610.05" y="554.79" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(177.60 610.05 554.79)"> </text>
-  <text x="589.95" y="554.79" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(182.40 589.95 554.79)">E</text>
-  <text x="569.92" y="553.11" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(187.20 569.92 553.11)">X</text>
-  <text x="550.10" y="549.76" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(192.00 550.10 549.76)">P</text>
-  <text x="530.63" y="544.76" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(196.80 530.63 544.76)">R</text>
-  <text x="511.65" y="538.15" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(201.60 511.65 538.15)">E</text>
-  <text x="493.29" y="529.97" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(206.40 493.29 529.97)">S</text>
-  <text x="475.67" y="520.29" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(211.20 475.67 520.29)">S</text>
-  <text x="458.93" y="509.16" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(216.00 458.93 509.16)"> </text>
-  <text x="443.18" y="496.68" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(220.80 443.18 496.68)"> </text>
-  <text x="428.53" y="482.92" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(225.60 428.53 482.92)">·</text>
-  <text x="415.08" y="467.98" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(230.40 415.08 467.98)"> </text>
-  <text x="402.92" y="451.97" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(235.20 402.92 451.97)"> </text>
-  <text x="392.15" y="435.00" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(240.00 392.15 435.00)">A</text>
-  <text x="382.84" y="417.19" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(244.80 382.84 417.19)">U</text>
-  <text x="375.05" y="398.66" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(249.60 375.05 398.66)">T</text>
-  <text x="368.84" y="379.54" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(254.40 368.84 379.54)">O</text>
-  <text x="364.25" y="359.97" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(259.20 364.25 359.97)">S</text>
-  <text x="361.31" y="340.09" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(264.00 361.31 340.09)">E</text>
-  <text x="360.05" y="320.03" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(268.80 360.05 320.03)">R</text>
-  <text x="360.47" y="299.93" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(273.60 360.47 299.93)">V</text>
-  <text x="362.57" y="279.94" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(278.40 362.57 279.94)">I</text>
-  <text x="366.34" y="260.20" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(283.20 366.34 260.20)">C</text>
-  <text x="371.75" y="240.84" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(288.00 371.75 240.84)">I</text>
-  <text x="378.75" y="222.00" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(292.80 378.75 222.00)">O</text>
-  <text x="387.31" y="203.81" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(297.60 387.31 203.81)"> </text>
-  <text x="397.36" y="186.40" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(302.40 397.36 186.40)">E</text>
-  <text x="408.83" y="169.90" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(307.20 408.83 169.90)">X</text>
-  <text x="421.65" y="154.41" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(312.00 421.65 154.41)">P</text>
-  <text x="435.71" y="140.05" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(316.80 435.71 140.05)">R</text>
-  <text x="450.92" y="126.91" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(321.60 450.92 126.91)">E</text>
-  <text x="467.19" y="115.10" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(326.40 467.19 115.10)">S</text>
-  <text x="484.38" y="104.69" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(331.20 484.38 104.69)">S</text>
-  <text x="502.38" y="95.75" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(336.00 502.38 95.75)"> </text>
-  <text x="521.07" y="88.35" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(340.80 521.07 88.35)"> </text>
-  <text x="540.31" y="82.54" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(345.60 540.31 82.54)">·</text>
-  <text x="559.98" y="78.36" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(350.40 559.98 78.36)"> </text>
-  <text x="579.92" y="75.84" font-family="Arial Black, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" transform="rotate(355.20 579.92 75.84)"> </text>
-
-  <!-- Banda roja con "AUTOSERVICIO" -->
-  <rect x="370" y="265" width="460" height="48" fill="#ef4444" rx="2"/>
-  <text x="600" y="299" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#ffffff" letter-spacing="14" text-anchor="middle">AUTOSERVICIO</text>
-
-  <!-- "Express" grande sans-serif blanco (igual al original) -->
-  <text x="600" y="400" font-family="Arial Black, Impact, Helvetica, sans-serif" font-size="92" font-weight="900" fill="#ffffff" text-anchor="middle">Express</text>
+  <!-- Pequeña "e" decorativa al lado de la Q (Express) -->
+  <text x="138" y="130" font-family="Georgia, serif" font-size="28" font-weight="700" font-style="italic" fill="#ef4444" text-anchor="middle">e</text>
 </svg>
