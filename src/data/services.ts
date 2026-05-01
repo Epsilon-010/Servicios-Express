@@ -59,7 +59,7 @@ export const services: Service[] = [
       'Preparación para pintura',
       'Tratamiento anticorrosivo',
     ],
-    image: cld('pexels-olly-3807799_suxnvk'),
+    image: cld('banco-de-enderezado-de-chasis_m4vfj4'),
     Icon: HammerIcon,
   },
 ]
