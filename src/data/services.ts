@@ -27,7 +27,7 @@ export const services: Service[] = [
       'Sistema eléctrico',
       'Cambio de aceite y filtros',
     ],
-    image: cld('pexels-cottonbro-7564864_uynhlm'),
+    image: cld('pexels-cottonbro-7564866_vcpvpy'),
     Icon: WrenchIcon,
   },
   {
@@ -43,7 +43,7 @@ export const services: Service[] = [
       'Pulido y abrillantado',
       'Protección anti-rayos UV',
     ],
-    image: cld('pexels-vladan-rajkovic-159003801-18136808_f3ihjo'),
+    image: cld('pexels-vladan-rajkovic-159003801-18136808_f16bbs'),
     Icon: PaintIcon,
   },
   {
@@ -59,7 +59,7 @@ export const services: Service[] = [
       'Preparación para pintura',
       'Tratamiento anticorrosivo',
     ],
-    image: cld('pexels-cottonbro-4489733_c9ehil'),
+    image: cld('pexels-olly-3807799_suxnvk'),
     Icon: HammerIcon,
   },
 ]
