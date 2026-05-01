@@ -43,7 +43,7 @@ export const services: Service[] = [
       'Pulido y abrillantado',
       'Protección anti-rayos UV',
     ],
-    image: cld('pexels-esmihel-14615263-convertido-de-jpg_1_sfqcrj'),
+    image: cld('pexels-vladan-rajkovic-159003801-18136808_f3ihjo'),
     Icon: PaintIcon,
   },
   {
@@ -59,7 +59,7 @@ export const services: Service[] = [
       'Preparación para pintura',
       'Tratamiento anticorrosivo',
     ],
-    image: cld('pexels-cottonbro-7019767_skptrb'),
+    image: cld('pexels-cottonbro-4489733_c9ehil'),
     Icon: HammerIcon,
   },
 ]

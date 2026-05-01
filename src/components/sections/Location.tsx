@@ -52,7 +52,7 @@ export function Location() {
             />
 
             {/* Overlay propio que cubre el panel de Google (rating + acciones) */}
-            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 w-[240px] sm:w-[280px] bg-stone-900/95 backdrop-blur-md rounded-2xl border border-stone-800 p-4 sm:p-5 shadow-xl shadow-black/40 z-10">
+            <div className="absolute top-2 left-2 sm:top-3 sm:left-3 w-[calc(100%-1rem)] max-w-[290px] sm:max-w-[340px] lg:max-w-[360px] min-h-[150px] bg-stone-900/95 backdrop-blur-md rounded-2xl border border-stone-800 p-4 sm:p-5 shadow-xl shadow-black/40 z-10">
               <p className="text-red-400 text-[9px] tracking-[0.42em] uppercase font-semibold mb-2">
                 Taller
               </p>
