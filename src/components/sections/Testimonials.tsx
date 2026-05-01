@@ -6,9 +6,7 @@ const loop = [...testimonials, ...testimonials]
 
 export function Testimonials() {
   return (
-    <section className="relative py-20 sm:py-28 lg:py-44 bg-zinc-950 text-white overflow-hidden">
-      <div className="pointer-events-none absolute top-1/3 -right-40 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[160px]" />
-
+    <section className="relative py-20 sm:py-28 lg:py-44 bg-stone-950 text-white overflow-hidden">
       <div className="relative">
         {/* Header — dentro del max-width */}
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 mb-12 sm:mb-16 lg:mb-20" data-animate="fade-up">
@@ -62,7 +60,7 @@ export function Testimonials() {
           className="testimonial-marquee-mask group relative"
           data-animate="fade-up"
         >
-          <div className="testimonial-marquee flex gap-5 w-max group-hover:[animation-play-state:paused]">
+          <div className="testimonial-marquee flex gap-12 sm:gap-16 w-max group-hover:[animation-play-state:paused]">
             {loop.map((t, i) => (
               <article
                 key={`${t.name}-${i}`}

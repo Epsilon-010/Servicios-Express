@@ -1,10 +1,16 @@
 export const phone = '9517688543'
 export const phoneDisplay = '951 768 8543'
 export const telHref = `tel:${phone}`
-export const whatsAppHref = `https://wa.me/52${phone}`
+
+export const whatsappPhone = '9516153565'
+export const whatsappDisplay = '951 615 3565'
+export const whatsAppHref = `https://wa.me/52${whatsappPhone}`
 
 export const mapEmbedUrl =
   'https://www.google.com/maps?q=Auto+Servicio+Quevedo+Express,+Av.+Morelos+No.+29,+San+Antonio+de+la+Cal,+Oaxaca&z=18&output=embed'
+
+export const mapDirectionsUrl =
+  'https://www.google.com/maps/dir/?api=1&destination=Auto+Servicio+Quevedo+Express,+Av.+Morelos+29,+San+Antonio+de+la+Cal,+Oaxaca'
 
 export const business = {
   name: 'Auto Servicio Quevedo Express',

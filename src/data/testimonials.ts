@@ -28,13 +28,6 @@ export const testimonials: Testimonial[] = [
       'Tenía un golpe bastante feo en la puerta y lo dejaron impecable. Trabajo de primera calidad a buen precio.',
   },
   {
-    name: 'Fernanda López',
-    service: 'Lavado y Encerado',
-    stars: 5,
-    comment:
-      'Servicio rápido y eficiente. Mi auto brilla como nuevo. Volveré con seguridad para mantenimiento regular.',
-  },
-  {
     name: 'Javier Rodríguez',
     service: 'Diagnóstico Completo',
     stars: 5,

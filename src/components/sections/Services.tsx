@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, useScroll, useTransform } from 'motion/react'
 import { services, type Service } from '../../data/services'
 import { getLenis } from '../../hooks/useLenis'
 import { useOutsideClick } from '../../hooks/use-outside-click'
@@ -8,6 +8,15 @@ import { useOutsideClick } from '../../hooks/use-outside-click'
 export function Services() {
   const [active, setActive] = useState<Service | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
+  const aboutRef = useRef<HTMLDivElement>(null)
+
+  // Parallax sutil del título "30 años / detrás de cada motor"
+  const { scrollYProgress: aboutProgress } = useScroll({
+    target: aboutRef,
+    offset: ['start end', 'end start'],
+  })
+  const aboutTitleY = useTransform(aboutProgress, [0, 1], [60, -60])
+  const aboutDescY = useTransform(aboutProgress, [0, 1], [30, -30])
 
   useOutsideClick(cardRef, () => setActive(null))
 
@@ -46,14 +55,48 @@ export function Services() {
       id="servicios"
       className="relative py-20 sm:py-28 lg:py-44 bg-stone-950 text-white overflow-hidden"
     >
-      {/* Subtle red ambient at edges */}
-      <div className="pointer-events-none absolute -top-40 -right-32 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[160px]" />
-      <div className="pointer-events-none absolute -bottom-40 -left-32 w-[500px] h-[500px] bg-red-900/8 rounded-full blur-[160px]" />
-
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-        {/* Header */}
+        {/* ─── About: trayectoria + filosofía ─── */}
+        <div ref={aboutRef} className="mb-16 sm:mb-20 lg:mb-28" data-animate="fade-up">
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-px bg-red-500" />
+              <span className="text-red-400 text-[10px] font-semibold tracking-[0.42em] uppercase">
+                El taller
+              </span>
+            </div>
+            <span className="font-playfair italic text-white/30 text-sm tracking-[0.42em]">
+              01 / 05
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+            {/* Title */}
+            <motion.div style={{ y: aboutTitleY }} className="lg:col-span-7 will-change-transform">
+              <h2 className="text-[2.5rem] sm:text-6xl lg:text-8xl text-white tracking-tight font-playfair font-light leading-[0.95]">
+                30 años
+                <br />
+                <span className="italic font-medium text-red-500">detrás de cada motor</span>
+              </h2>
+            </motion.div>
+
+            {/* Description */}
+            <motion.div style={{ y: aboutDescY }} className="lg:col-span-5 will-change-transform">
+              <p className="text-white/70 text-base sm:text-lg leading-[1.75] font-light">
+                La calidad <span className="text-white">no se anuncia, se demuestra</span>. Cada
+                vehículo recibe el mismo nivel de revisión y el mismo trabajo que nos ha
+                mantenido vigentes durante tres décadas.
+              </p>
+              <p className="text-white/45 text-sm leading-[1.85] font-light mt-5">
+                No buscamos atender a todos. Buscamos hacerlo bien — una y otra vez.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* ─── Services subhead ─── */}
         <div
-          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 sm:mb-16 lg:mb-20"
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 sm:mb-16"
           data-animate="fade-up"
         >
           <div>
@@ -63,10 +106,11 @@ export function Services() {
                 Especialidades
               </span>
             </div>
-            <h2 className="text-[2.5rem] sm:text-5xl lg:text-7xl text-white tracking-tight font-playfair font-light leading-[1.05]">
-              Nuestros <br className="hidden sm:block" />
-              <span className="italic font-medium text-red-500">Servicios</span>
-            </h2>
+            <h3 className="text-[2rem] sm:text-4xl lg:text-5xl text-white tracking-tight font-playfair font-light leading-[1.05]">
+              Lo que hacemos
+              <br className="hidden sm:block" />
+              <span className="italic font-medium text-red-500"> por tu vehículo</span>
+            </h3>
           </div>
           <p className="text-white/55 text-sm max-w-sm leading-[1.85] font-light lg:text-right">
             Pasa el cursor para ver el efecto.

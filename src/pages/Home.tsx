@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Footer } from '../components/layout/Footer'
 import { MobileCTA } from '../components/layout/MobileCTA'
 import { Navbar } from '../components/layout/Navbar'
+import { ScrollProgress } from '../components/ScrollProgress'
 import { Hero } from '../components/sections/Hero'
 import { TextureWarmup } from '../components/TextureWarmup'
 import { services } from '../data/services'
@@ -34,7 +35,7 @@ const CtaFinal = lazy(() =>
 const SERVICE_IMAGES = services.map((s) => s.image)
 
 function SectionFallback() {
-  return <div className="h-[60vh] bg-black" />
+  return <div className="h-[60vh] bg-stone-950" />
 }
 
 export default function Home() {
@@ -48,7 +49,8 @@ export default function Home() {
   usePrefetchSections()
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-stone-950 text-white">
+      <ScrollProgress />
       <TextureWarmup urls={SERVICE_IMAGES} />
       <Navbar />
       <Hero />

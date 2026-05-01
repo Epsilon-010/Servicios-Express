@@ -80,12 +80,18 @@ body {
 
 /* ── TESTIMONIAL MARQUEE — scroll horizontal infinito ──────────────── */
 .testimonial-marquee {
-  animation: testimonialMarquee 50s linear infinite;
+  animation: testimonialMarquee 60s linear infinite;
   will-change: transform;
 }
 @keyframes testimonialMarquee {
-  /* Avanza hasta el punto donde la 2da copia coincide visualmente con la 1ra */
-  to { transform: translateX(calc(-50% - 0.625rem)); }
+  /* Avanza hasta el punto donde la 2da copia coincide visualmente con la 1ra
+     (offset = mitad del gap entre copias: gap-12 mobile = 1.5rem; gap-16 desktop = 2rem) */
+  to { transform: translateX(calc(-50% - 1.5rem)); }
+}
+@media (min-width: 640px) {
+  @keyframes testimonialMarquee {
+    to { transform: translateX(calc(-50% - 2rem)); }
+  }
 }
 
 /* Bordes desvanecidos para que las cards entren/salgan suavemente */

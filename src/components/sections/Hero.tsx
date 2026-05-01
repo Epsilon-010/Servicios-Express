@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { motion } from 'motion/react'
+import { useMemo, useRef } from 'react'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { cld } from '../../lib/cloudinary'
 
 // Cloudinary: alpha-channel preserved (PNG → AVIF/WebP con transparencia)
@@ -42,8 +42,24 @@ function CSSSnow() {
 }
 
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null)
+  // Scroll progress 0→1 mientras el Hero pasa por la viewport
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  })
+  // Title se mueve más rápido que la página (sale antes) — sensación de aceleración
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -90])
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 1, 0])
+  // Car se queda más tiempo en cuadro — efecto de profundidad
+  const carY = useTransform(scrollYProgress, [0, 1], [0, 60])
+  const carScale = useTransform(scrollYProgress, [0, 1], [1, 0.92])
+  // Stats fade out un poco antes que el resto
+  const statsOpacity = useTransform(scrollYProgress, [0, 0.4, 0.8], [1, 0.6, 0])
+  const statsY = useTransform(scrollYProgress, [0, 1], [0, -40])
+
   return (
-    <header className="hero-section relative min-h-screen bg-black overflow-hidden text-white isolate">
+    <header ref={heroRef} className="hero-section relative min-h-screen bg-stone-950 overflow-hidden text-white isolate">
       {/* ─── NIEVE CSS — keyframes puros, 0 JS por frame ─── */}
       <CSSSnow />
 
@@ -53,7 +69,10 @@ export function Hero() {
       {/* ─── CONTENT ─── */}
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-between px-5 sm:px-8 pt-16 pb-6 lg:pt-20 lg:pb-8">
         {/* Top: badge + title + spotlight */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto pt-1 sm:pt-3 w-full">
+        <motion.div
+          style={{ y: titleY, opacity: titleOpacity }}
+          className="flex flex-col items-center text-center max-w-3xl mx-auto pt-1 sm:pt-3 w-full will-change-transform"
+        >
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -92,14 +111,17 @@ export function Hero() {
             <div className="hero-spot-bar-core" />
             <div className="hero-spot-mist" />
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* ─── CAR (image) with headlights + 3D ground illumination ─── */}
         <motion.div
+          style={{ y: carY, scale: carScale }}
+          className="hero-car relative w-[min(540px,86vw)] mx-auto -mt-2 will-change-transform"
+        ><motion.div
           initial={{ opacity: 0, y: 50, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 1, duration: 1.2, ease: 'easeOut' }}
-          className="hero-car relative w-[min(540px,86vw)] mx-auto -mt-2"
+          className="relative"
         >
           {/* Perspective grid floor (concrete, se ilumina con los faros) */}
           <div className="hero-ground-floor absolute" />
@@ -126,13 +148,16 @@ export function Hero() {
             />
           </div>
         </motion.div>
+        </motion.div>
 
         {/* Stats — editorial, compacto */}
         <motion.div
+          style={{ y: statsY, opacity: statsOpacity }}
+          className="w-full max-w-4xl mx-auto pt-4 will-change-transform"
+        ><motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.8 }}
-          className="w-full max-w-4xl mx-auto pt-4"
         >
           <div className="h-px w-full bg-linear-to-r from-transparent via-white/25 to-transparent mb-5" />
 
@@ -142,7 +167,7 @@ export function Hero() {
                 Años
               </p>
               <p className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-white leading-none">
-                <span data-counter="35" data-suffix="+">35+</span>
+                <span data-counter="30">30</span>
               </p>
             </div>
             <div className="hero-stat px-2 sm:px-4 border-x border-white/10">
@@ -162,6 +187,7 @@ export function Hero() {
               </p>
             </div>
           </div>
+        </motion.div>
         </motion.div>
       </div>
     </header>

@@ -1,15 +1,13 @@
 import { mapSteps } from '../../data/mapSteps'
-import { mapEmbedUrl, whatsAppHref } from '../../lib/contact'
+import { mapDirectionsUrl, mapEmbedUrl, whatsAppHref } from '../../lib/contact'
 import { WhatsAppIcon } from '../icons'
 
 export function Location() {
   return (
     <section
       id="ubicacion"
-      className="relative py-20 sm:py-28 lg:py-44 bg-stone-950 text-white overflow-hidden border-y border-stone-900"
+      className="relative py-20 sm:py-28 lg:py-44 bg-stone-950 text-white overflow-hidden"
     >
-      <div className="pointer-events-none absolute -bottom-40 -left-32 w-[500px] h-[500px] bg-red-900/8 rounded-full blur-[180px]" />
-
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         {/* Header */}
         <div className="mb-12 sm:mb-16 lg:mb-20" data-animate="fade-up">
@@ -52,6 +50,34 @@ export function Location() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Ubicación Auto Servicio Quevedo Express"
             />
+
+            {/* Overlay propio que cubre el panel de Google (rating + acciones) */}
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 w-[240px] sm:w-[280px] bg-stone-900/95 backdrop-blur-md rounded-2xl border border-stone-800 p-4 sm:p-5 shadow-xl shadow-black/40 z-10">
+              <p className="text-red-400 text-[9px] tracking-[0.42em] uppercase font-semibold mb-2">
+                Taller
+              </p>
+              <p className="font-playfair text-white text-sm sm:text-base font-medium tracking-tight leading-snug mb-1">
+                Auto Servicio
+                <br />
+                <span className="italic">Quevedo Express</span>
+              </p>
+              <p className="text-white/55 text-xs font-light leading-snug mb-4">
+                Av. Morelos No. 29
+              </p>
+              <a
+                href={mapDirectionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-[11px] font-semibold px-3.5 py-2 rounded-full transition-colors tracking-wide"
+              >
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21.71 11.29 12.71 2.29a1 1 0 0 0-1.42 0l-9 9a1 1 0 0 0 0 1.42l9 9a1 1 0 0 0 1.42 0l9-9a1 1 0 0 0 0-1.42Z" />
+                  <path d="M9 12h6m0 0-2-2m2 2-2 2" />
+                </svg>
+                Cómo llegar
+              </a>
+            </div>
+
             {/* Gradient overlay sutil para integrar */}
             <div className="absolute inset-0 ring-inset ring-1 ring-white/5 pointer-events-none rounded-3xl" />
           </div>
@@ -62,7 +88,7 @@ export function Location() {
             {mapSteps.map((step, i) => (
               <div
                 key={step.num}
-                className="group card-lift bg-black border border-stone-800 hover:border-red-500/40 rounded-2xl p-5 flex items-start gap-4 overflow-hidden relative"
+                className="group card-lift bg-stone-900 border border-stone-800 hover:border-red-500/40 rounded-2xl p-5 flex items-start gap-4 overflow-hidden relative"
                 data-animate="fade-right"
                 style={{ transitionDelay: `${i * 0.08}s` }}
               >

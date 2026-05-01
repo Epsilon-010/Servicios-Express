@@ -3,7 +3,7 @@ import { PhoneIcon, WhatsAppIcon, WrenchIcon } from '../icons'
 
 export function Footer() {
   return (
-    <footer className="relative bg-black border-t border-stone-900 text-white">
+    <footer className="relative bg-stone-950 border-t border-stone-900 text-white">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-12 sm:pt-16 pb-8 sm:pb-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 sm:gap-10 mb-10 sm:mb-12">
           {/* Brand block */}
@@ -17,7 +17,7 @@ export function Footer() {
               </p>
             </a>
             <p className="text-white/50 text-sm leading-relaxed font-light max-w-xs">
-              Más de 35 años cuidando vehículos en San Antonio de la Cal, Oaxaca. Mecánica
+              30 años cuidando vehículos en San Antonio de la Cal, Oaxaca. Mecánica
               profesional con la atención que tu auto merece.
             </p>
           </div>
@@ -80,9 +80,6 @@ export function Footer() {
         <div className="pt-8 border-t border-stone-900 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/35 text-xs tracking-wide font-light">
             © 2026 {business.name}. Todos los derechos reservados.
-          </p>
-          <p className="text-white/30 text-[10px] tracking-[0.32em] uppercase font-semibold font-playfair italic">
-            Hecho en Oaxaca
           </p>
         </div>
       </div>
