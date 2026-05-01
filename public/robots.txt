@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://servicio-quevedo-express.com/sitemap.xml
+Sitemap: https://www.servicio-quevedo-express.com/sitemap.xml
