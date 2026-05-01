@@ -71,7 +71,7 @@ export function Location() {
             </div>
 
             {/* DESKTOP / TABLET — card completa con nombre + dirección */}
-            <div className="hidden sm:block absolute top-3 left-3 max-w-[340px] lg:max-w-[360px] min-h-[150px] bg-stone-900/95 backdrop-blur-md rounded-2xl border border-stone-800 p-5 shadow-xl shadow-black/40 z-10">
+            <div className="hidden sm:block absolute top-3 left-3 w-[320px] lg:w-[360px] min-h-[160px] bg-stone-900 rounded-2xl border border-stone-800 p-5 shadow-xl shadow-black/60 z-10">
               <p className="text-red-400 text-[9px] tracking-[0.42em] uppercase font-semibold mb-2">
                 Taller
               </p>
