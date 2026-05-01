@@ -51,17 +51,36 @@ export function Location() {
               title="Ubicación Auto Servicio Quevedo Express"
             />
 
-            {/* Overlay propio que cubre el panel de Google (rating + acciones) */}
-            <div className="absolute top-2 left-2 sm:top-3 sm:left-3 w-[calc(100%-1rem)] max-w-[290px] sm:max-w-[340px] lg:max-w-[360px] min-h-[150px] bg-stone-900/95 backdrop-blur-md rounded-2xl border border-stone-800 p-4 sm:p-5 shadow-xl shadow-black/40 z-10">
+            {/* MÓVIL — overlay compacto, solo cubre el panel pequeño de Google y deja el pin visible */}
+            <div className="sm:hidden absolute top-2 left-2 max-w-[195px] bg-stone-900/95 backdrop-blur-md rounded-xl border border-stone-800 px-3 py-2.5 shadow-lg shadow-black/40 z-10">
+              <p className="text-red-400 text-[8px] tracking-[0.32em] uppercase font-semibold mb-1.5 leading-none">
+                Quevedo Express
+              </p>
+              <a
+                href={mapDirectionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 bg-red-600 text-white text-[10px] font-semibold px-2.5 py-1.5 rounded-full tracking-wide"
+              >
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21.71 11.29 12.71 2.29a1 1 0 0 0-1.42 0l-9 9a1 1 0 0 0 0 1.42l9 9a1 1 0 0 0 1.42 0l9-9a1 1 0 0 0 0-1.42Z" />
+                  <path d="M9 12h6m0 0-2-2m2 2-2 2" />
+                </svg>
+                Cómo llegar
+              </a>
+            </div>
+
+            {/* DESKTOP / TABLET — card completa con nombre + dirección */}
+            <div className="hidden sm:block absolute top-3 left-3 max-w-[340px] lg:max-w-[360px] min-h-[150px] bg-stone-900/95 backdrop-blur-md rounded-2xl border border-stone-800 p-5 shadow-xl shadow-black/40 z-10">
               <p className="text-red-400 text-[9px] tracking-[0.42em] uppercase font-semibold mb-2">
                 Taller
               </p>
-              <p className="font-playfair text-white text-sm sm:text-base font-medium tracking-tight leading-snug mb-1">
+              <p className="font-playfair text-white text-base font-medium tracking-tight leading-snug mb-1">
                 Auto Servicio
                 <br />
                 <span className="italic">Quevedo Express</span>
               </p>
-              <p className="text-white/55 text-xs font-light leading-snug mb-4">
+              <p className="text-white/55 text-sm font-light leading-snug mb-4">
                 Av. Morelos No. 29
               </p>
               <a
