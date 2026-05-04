@@ -9,7 +9,7 @@ import { ClockIcon, PhoneIcon, PinIcon, WhatsAppIcon } from '../icons'
 
 const schedule = [
   { day: 'Lun – Vie', hours: '9:00 – 15:00', extra: '16:00 – 18:00' },
-  { day: 'Sábado', hours: '9:00 – 15:00', extra: null },
+  { day: 'Sábado', hours: '9:00 – 13:00', extra: null },
   { day: 'Domingo', hours: 'Cerrado', extra: null, closed: true },
 ]
 
@@ -215,53 +215,70 @@ export function Contact() {
 
         {/* ─── Schedule strip ─── */}
         <article
-          className="relative mt-5 bg-stone-900 border border-stone-800 rounded-3xl p-6 sm:p-7 overflow-hidden"
+          className="relative mt-5 bg-stone-900 border border-stone-800 rounded-3xl p-6 sm:p-8 overflow-hidden"
           data-animate="fade-up"
           style={{ transitionDelay: '0.24s' }}
         >
-          <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
-            <div className="flex items-center gap-3 shrink-0">
-              <div className="w-11 h-11 bg-stone-900 ring-1 ring-stone-800 rounded-xl flex items-center justify-center">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 bg-red-600/15 ring-1 ring-red-500/40 rounded-xl flex items-center justify-center">
                 <ClockIcon className="w-5 h-5 text-red-400" />
               </div>
               <div>
                 <p className="text-red-400 text-[9px] tracking-[0.42em] uppercase font-semibold leading-none mb-1.5">
                   Horario
                 </p>
-                <h3 className="font-playfair text-lg text-white font-light tracking-tight leading-none">
+                <h3 className="font-playfair text-xl text-white font-light tracking-tight leading-none">
                   <span className="italic">Atención</span>
                 </h3>
               </div>
             </div>
+            <span className="hidden sm:flex items-center gap-2 bg-stone-950 ring-1 ring-stone-800 rounded-full px-3 py-1.5">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-75" />
+                <span className="relative bg-green-400 rounded-full h-1.5 w-1.5" />
+              </span>
+              <span className="text-white/70 text-[10px] tracking-[0.2em] uppercase font-semibold">
+                Diagnóstico gratuito
+              </span>
+            </span>
+          </div>
 
-            <div className="hidden lg:block w-px h-14 bg-stone-800" />
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 flex-1">
-              {schedule.map((s) => (
-                <div
-                  key={s.day}
-                  className="flex sm:flex-col justify-between sm:justify-start sm:gap-1.5 pb-3 sm:pb-0 border-b sm:border-b-0 border-stone-800/60 last:border-0 last:pb-0"
+          {/* Días — grid con divisores y horas grandes */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 sm:divide-x divide-stone-800">
+            {schedule.map((s, i) => (
+              <div
+                key={s.day}
+                className={`
+                  ${i > 0 ? 'border-t sm:border-t-0 border-stone-800/60 pt-5 mt-5 sm:pt-0 sm:mt-0' : ''}
+                  sm:px-6 first:sm:pl-0 last:sm:pr-0
+                `}
+              >
+                <p className="text-red-400 text-[9px] tracking-[0.42em] uppercase font-semibold mb-3 leading-none">
+                  {s.day}
+                </p>
+                <p
+                  className={
+                    s.closed
+                      ? 'font-playfair italic text-red-400 text-2xl sm:text-3xl font-light leading-none tracking-tight'
+                      : 'font-playfair text-white text-2xl sm:text-3xl font-light leading-none tracking-tight'
+                  }
                 >
-                  <span className="text-white/55 font-light text-xs tracking-wide">
-                    {s.day}
-                  </span>
-                  <span
-                    className={
-                      s.closed
-                        ? 'text-red-400 font-semibold tracking-tight italic font-playfair text-sm text-right sm:text-left'
-                        : 'text-white font-medium tracking-tight text-sm text-right sm:text-left'
-                    }
-                  >
-                    {s.hours}
-                    {s.extra && (
-                      <span className="text-white/40 font-light text-[11px] block">
-                        {s.extra}
-                      </span>
-                    )}
-                  </span>
-                </div>
-              ))}
-            </div>
+                  {s.hours}
+                </p>
+                {s.extra && (
+                  <p className="text-white/55 font-light text-xs sm:text-[13px] mt-2 tracking-wide">
+                    también <span className="text-white/85 font-medium">{s.extra}</span>
+                  </p>
+                )}
+                {s.closed && (
+                  <p className="text-white/40 font-light text-xs mt-2 tracking-wide italic font-playfair">
+                    día de descanso
+                  </p>
+                )}
+              </div>
+            ))}
           </div>
         </article>
       </div>
