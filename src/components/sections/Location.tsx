@@ -30,8 +30,7 @@ export function Location() {
               <span className="italic font-medium text-red-500">llegar?</span>
             </h2>
             <p className="text-white/55 text-sm max-w-sm leading-[1.85] font-light">
-              Av. Morelos No. 29, Centro de San Antonio de la Cal. <br />A unos pasos del mercado
-              local.
+              Av. Morelos No. 29, Centro de San Antonio de la Cal, Oaxaca.
             </p>
           </div>
         </div>

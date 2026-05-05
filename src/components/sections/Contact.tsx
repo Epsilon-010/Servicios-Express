@@ -136,21 +136,12 @@ export function Contact() {
               </p>
             </address>
 
-            <div className="mt-auto pt-5 border-t border-stone-800 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inset-0 bg-red-500 rounded-full animate-ping opacity-60" />
-                  <span className="relative bg-red-500 rounded-full h-1.5 w-1.5" />
-                </span>
-                <span className="text-white/55 text-[10px] tracking-[0.2em] uppercase font-semibold">
-                  A 2 min del mercado
-                </span>
-              </div>
+            <div className="mt-auto pt-5 border-t border-stone-800 flex items-center justify-end">
               <a
                 href="#ubicacion"
                 className="text-red-400 hover:text-red-300 text-[10px] tracking-[0.32em] uppercase font-semibold transition-colors flex items-center gap-1"
               >
-                Mapa
+                Ver mapa
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
