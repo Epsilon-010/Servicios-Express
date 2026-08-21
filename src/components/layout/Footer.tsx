@@ -1,7 +1,11 @@
-import { business, phoneDisplay, telHref, whatsAppHref } from '../../lib/contact'
+import { useState } from 'react'
+import { business, email, mailtoHref, phoneDisplay, telHref, whatsAppHref } from '../../lib/contact'
+import { LegalModal, type LegalDocId } from '../legal/LegalModal'
 import { PhoneIcon, WhatsAppIcon, WrenchIcon } from '../icons'
 
 export function Footer() {
+  const [legalDoc, setLegalDoc] = useState<LegalDocId | null>(null)
+
   return (
     <footer className="relative bg-stone-950 border-t border-stone-900 text-white">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-12 sm:pt-16 pb-8 sm:pb-10">
@@ -66,6 +70,24 @@ export function Footer() {
               <WhatsAppIcon className="w-4 h-4 text-red-400/80" />
               WhatsApp
             </a>
+            <a
+              href={mailtoHref}
+              className="flex items-center gap-2.5 text-white/70 hover:text-red-300 text-sm font-light transition-colors mb-4"
+            >
+              <svg
+                className="w-4 h-4 text-red-400/80"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              {email}
+            </a>
             <p className="text-white/50 text-xs leading-relaxed font-light">
               {business.address.street}
               <br />
@@ -81,8 +103,26 @@ export function Footer() {
           <p className="text-white/35 text-xs tracking-wide font-light">
             © 2026 {business.name}. Todos los derechos reservados.
           </p>
+          <div className="flex items-center gap-6">
+            <button
+              type="button"
+              onClick={() => setLegalDoc('privacidad')}
+              className="text-white/45 hover:text-red-400 text-xs font-light tracking-wide transition-colors"
+            >
+              Aviso de Privacidad
+            </button>
+            <button
+              type="button"
+              onClick={() => setLegalDoc('terminos')}
+              className="text-white/45 hover:text-red-400 text-xs font-light tracking-wide transition-colors"
+            >
+              Términos y Condiciones
+            </button>
+          </div>
         </div>
       </div>
+
+      {legalDoc && <LegalModal doc={legalDoc} onClose={() => setLegalDoc(null)} />}
     </footer>
   )
 }

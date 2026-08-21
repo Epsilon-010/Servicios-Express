@@ -66,7 +66,7 @@ export function Services() {
               </span>
             </div>
             <span className="font-playfair italic text-white/30 text-sm tracking-[0.42em]">
-              01 / 05
+              01 / 04
             </span>
           </div>
 

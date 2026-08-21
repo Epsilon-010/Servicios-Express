@@ -13,7 +13,7 @@ export function CtaFinal() {
               </span>
             </div>
             <span className="font-playfair italic text-white/30 text-sm tracking-[0.42em]">
-              05 / 05
+              04 / 04
             </span>
           </div>
 
@@ -32,9 +32,9 @@ export function CtaFinal() {
           </h2>
 
           <p className="text-center text-white/55 text-base sm:text-lg max-w-xl mx-auto mb-14 font-light leading-relaxed">
-            Llámanos o escríbenos por WhatsApp y te atendemos al momento.
+            Llámanos o escríbenos por WhatsApp y con gusto te atendemos.
             <br />
-            <span className="text-white/80">Diagnóstico gratuito, presupuesto sin compromiso.</span>
+            <span className="text-white/80">Presupuesto sin compromiso.</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-16">
@@ -69,9 +69,9 @@ export function CtaFinal() {
           {/* Quick info row */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-stone-900 border border-stone-800 rounded-3xl overflow-hidden">
             {[
-              { label: 'Horario hoy', value: '9:00 – 18:00' },
-              { label: 'Respuesta', value: '< 5 min' },
-              { label: 'Diagnóstico', value: 'Gratuito' },
+              { label: 'Lun – Vie', value: '9:00 – 18:00' },
+              { label: 'Sábado', value: '9:00 – 13:00' },
+              { label: 'Presupuesto', value: 'Sin compromiso' },
               { label: 'Años de oficio', value: '30', counter: 30 },
             ].map((stat, i) => (
               <div

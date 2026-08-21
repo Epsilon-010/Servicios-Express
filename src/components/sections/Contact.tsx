@@ -30,7 +30,7 @@ export function Contact() {
               </span>
             </div>
             <span className="font-playfair italic text-white/30 text-sm tracking-[0.42em]">
-              02 / 05
+              02 / 04
             </span>
           </div>
 
@@ -41,8 +41,8 @@ export function Contact() {
               <span className="italic font-medium text-red-500">aquí para ti</span>
             </h2>
             <p className="text-white/55 text-sm max-w-sm leading-[1.85] font-light">
-              Llámanos, escríbenos por WhatsApp o pásate al taller. Diagnóstico siempre
-              gratuito y presupuesto sin compromiso.
+              Llámanos, escríbenos por WhatsApp o pásate al taller. Con gusto te damos
+              un presupuesto sin compromiso.
             </p>
           </div>
         </div>
@@ -187,7 +187,7 @@ export function Contact() {
 
             <div className="relative mt-auto pt-5 border-t border-white/15 flex items-center justify-between">
               <span className="text-emerald-200/80 text-[10px] tracking-[0.2em] uppercase font-semibold">
-                Respuesta &lt; 5 min
+                Respuesta rápida
               </span>
               <a
                 href={whatsAppHref}
@@ -231,7 +231,7 @@ export function Contact() {
                 <span className="relative bg-green-400 rounded-full h-1.5 w-1.5" />
               </span>
               <span className="text-white/70 text-[10px] tracking-[0.2em] uppercase font-semibold">
-                Diagnóstico gratuito
+                Presupuesto sin compromiso
               </span>
             </span>
           </div>

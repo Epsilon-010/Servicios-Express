@@ -172,18 +172,18 @@ export function Hero() {
             </div>
             <div className="hero-stat px-2 sm:px-4 border-x border-white/10">
               <p className="text-red-400/80 text-[10px] uppercase tracking-[0.4em] mb-2 font-medium">
-                Clientes
+                Especialidades
               </p>
               <p className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-white leading-none">
-                <span data-counter="500" data-suffix="+">500+</span>
+                <span data-counter="3">3</span>
               </p>
             </div>
             <div className="hero-stat px-2 sm:px-4">
               <p className="text-red-400/80 text-[10px] uppercase tracking-[0.4em] mb-2 font-medium">
-                Reseñas
+                Días a la semana
               </p>
               <p className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-white leading-none">
-                5.0<span className="text-red-400 italic ml-1">★</span>
+                <span data-counter="6">6</span>
               </p>
             </div>
           </div>

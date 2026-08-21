@@ -19,7 +19,7 @@ export function Location() {
               </span>
             </div>
             <span className="font-playfair italic text-white/30 text-sm tracking-[0.42em]">
-              04 / 05
+              03 / 04
             </span>
           </div>
 

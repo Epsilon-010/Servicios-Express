@@ -25,9 +25,6 @@ const Slogan = lazy(() =>
 const Contact = lazy(() =>
   import('../components/sections/Contact').then((m) => ({ default: m.Contact })),
 )
-const Testimonials = lazy(() =>
-  import('../components/sections/Testimonials').then((m) => ({ default: m.Testimonials })),
-)
 const Location = lazy(() =>
   import('../components/sections/Location').then((m) => ({ default: m.Location })),
 )
@@ -61,7 +58,6 @@ export default function Home() {
         <Services />
         <Slogan />
         <Contact />
-        <Testimonials />
         <Location />
         <CtaFinal />
       </Suspense>

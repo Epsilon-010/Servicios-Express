@@ -18,7 +18,7 @@ export const services: Service[] = [
     title: 'Mecánica',
     desc: 'Diagnóstico y reparación de motor, transmisión, frenos y sistema eléctrico.',
     details:
-      'Servicio integral para mantener tu vehículo en condiciones óptimas. Trabajamos con equipo de diagnóstico computarizado y refacciones de marca para garantizar resultados confiables y duraderos.',
+      'Servicio integral para mantener tu vehículo en condiciones óptimas. Trabajamos con equipo de diagnóstico computarizado y refacciones de marca para ofrecer resultados confiables y duraderos.',
     features: [
       'Diagnóstico computarizado',
       'Afinación mayor y menor',
