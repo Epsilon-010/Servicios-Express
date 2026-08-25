@@ -74,9 +74,10 @@ export function Contact() {
 
             <a
               href={telHref}
-              className="block text-2xl sm:text-3xl text-white hover:text-red-300 transition-colors font-playfair font-light tracking-tight leading-none mb-6"
+              className="group/num relative block w-fit text-3xl sm:text-[2.6rem] text-white hover:text-red-300 transition-colors font-playfair font-light tracking-tight leading-none mb-6"
             >
               {phoneDisplay}
+              <span className="absolute -bottom-1.5 left-0 right-0 h-px bg-red-500/70 origin-left scale-x-0 group-hover/num:scale-x-100 transition-transform duration-500" />
             </a>
 
             <div className="mt-auto pt-5 border-t border-stone-800 flex items-center justify-between">
@@ -180,9 +181,10 @@ export function Contact() {
               href={whatsAppHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative block text-2xl sm:text-3xl text-white hover:text-emerald-100 transition-colors font-playfair font-light tracking-tight leading-none mb-6"
+              className="group/num relative block w-fit text-3xl sm:text-[2.6rem] text-white hover:text-emerald-100 transition-colors font-playfair font-light tracking-tight leading-none mb-6"
             >
               {whatsappDisplay}
+              <span className="absolute -bottom-1.5 left-0 right-0 h-px bg-white/70 origin-left scale-x-0 group-hover/num:scale-x-100 transition-transform duration-500" />
             </a>
 
             <div className="relative mt-auto pt-5 border-t border-white/15 flex items-center justify-between">

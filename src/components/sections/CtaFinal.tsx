@@ -1,4 +1,5 @@
-import { phoneDisplay, telHref, whatsAppHref, whatsappDisplay } from '../../lib/contact'
+import { telHref, whatsAppHref } from '../../lib/contact'
+import { PhoneIcon, WhatsAppIcon } from '../icons'
 
 export function CtaFinal() {
   return (
@@ -43,11 +44,12 @@ export function CtaFinal() {
               data-magnetic
               className="group flex items-center justify-center gap-2.5 sm:gap-3 bg-red-600 hover:bg-red-500 text-white active:scale-[0.98] font-semibold text-sm sm:text-base px-6 sm:px-10 py-4 sm:py-5 rounded-full shadow-[0_0_30px_-4px_rgba(220,38,38,0.7)] hover:shadow-[0_0_50px_-2px_rgba(220,38,38,0.95)] transition-all duration-300 tracking-wide will-change-transform"
             >
+              <PhoneIcon className="w-4 h-4 opacity-90" />
               <span className="font-playfair italic font-light text-[13px] sm:text-[15px] opacity-80">
                 Llamar
               </span>
               <span className="w-px h-3.5 sm:h-4 bg-white/30" />
-              <span>{phoneDisplay}</span>
+              <span>ahora</span>
               <span className="opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300">
                 →
               </span>
@@ -58,11 +60,12 @@ export function CtaFinal() {
               rel="noopener noreferrer"
               className="group flex items-center justify-center gap-2.5 sm:gap-3 text-white font-semibold text-sm sm:text-base px-6 sm:px-10 py-4 sm:py-5 rounded-full border border-white/30 hover:border-emerald-400 hover:bg-emerald-600/10 active:scale-[0.98] transition-all duration-300 tracking-wide"
             >
+              <WhatsAppIcon className="w-4 h-4 opacity-90" />
               <span className="font-playfair italic font-light text-[13px] sm:text-[15px] opacity-80">
-                WhatsApp
+                Escríbenos por
               </span>
               <span className="w-px h-3.5 sm:h-4 bg-white/30" />
-              <span>{whatsappDisplay}</span>
+              <span>WhatsApp</span>
             </a>
           </div>
 

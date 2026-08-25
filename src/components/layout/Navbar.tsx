@@ -1,4 +1,5 @@
-import { business, phoneDisplay, telHref, whatsAppHref } from '../../lib/contact'
+import { business, telHref, whatsAppHref } from '../../lib/contact'
+import { PhoneIcon } from '../icons'
 
 export function Navbar() {
   return (
@@ -36,8 +37,8 @@ export function Navbar() {
             href={telHref}
             className="group relative flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-[12px] font-medium px-5 py-2.5 rounded-full transition-all duration-300 tracking-wider shadow-[0_0_20px_-4px_rgba(220,38,38,0.6)] hover:shadow-[0_0_30px_-2px_rgba(220,38,38,0.9)]"
           >
-            <span className="hidden sm:inline">{phoneDisplay}</span>
-            <span className="sm:hidden">Llamar</span>
+            <PhoneIcon className="w-3.5 h-3.5" />
+            <span>Llamar</span>
           </a>
         </div>
       </div>

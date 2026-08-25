@@ -25,3 +25,11 @@ export const business = {
     zip: '71263, Oaxaca, México',
   },
 }
+
+// Crédito de desarrollo (discreto, solo footer)
+export const developer = {
+  name: 'Agustín Quevedo',
+  phone: '9514997286',
+  phoneDisplay: '951 499 7286',
+}
+export const developerWhatsAppHref = `https://wa.me/52${developer.phone}`

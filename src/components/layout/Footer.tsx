@@ -1,5 +1,13 @@
 import { useState } from 'react'
-import { business, email, mailtoHref, phoneDisplay, telHref, whatsAppHref } from '../../lib/contact'
+import {
+  business,
+  developer,
+  developerWhatsAppHref,
+  email,
+  mailtoHref,
+  telHref,
+  whatsAppHref,
+} from '../../lib/contact'
 import { LegalModal, type LegalDocId } from '../legal/LegalModal'
 import { PhoneIcon, WhatsAppIcon, WrenchIcon } from '../icons'
 
@@ -59,7 +67,7 @@ export function Footer() {
               className="flex items-center gap-2.5 text-white hover:text-red-300 text-base font-playfair transition-colors mb-2.5"
             >
               <PhoneIcon className="w-4 h-4 text-red-400" />
-              {phoneDisplay}
+              Llamar al taller
             </a>
             <a
               href={whatsAppHref}
@@ -100,9 +108,29 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-stone-900 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/35 text-xs tracking-wide font-light">
-            © 2026 {business.name}. Todos los derechos reservados.
-          </p>
+          <div className="flex flex-col items-center sm:items-start gap-1.5">
+            <p className="text-white/35 text-xs tracking-wide font-light">
+              © 2026 {business.name}. Todos los derechos reservados.
+            </p>
+            <a
+              href={developerWhatsAppHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`Sitio web por ${developer.name} · WhatsApp ${developer.phoneDisplay}`}
+              className="group inline-flex items-center gap-1.5 text-white/20 hover:text-emerald-400/80 text-[10px] tracking-[0.14em] font-light transition-colors duration-300"
+            >
+              <span>
+                Sitio web por{' '}
+                <span className="font-playfair italic tracking-normal text-[11px]">
+                  {developer.name}
+                </span>
+              </span>
+              <WhatsAppIcon className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+              <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 group-hover:max-w-[9rem] group-hover:opacity-100 transition-all duration-500">
+                {developer.phoneDisplay}
+              </span>
+            </a>
+          </div>
           <div className="flex items-center gap-6">
             <button
               type="button"
