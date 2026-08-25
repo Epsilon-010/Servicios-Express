@@ -35,7 +35,7 @@ export function Navbar() {
           </a>
           <a
             href={telHref}
-            className="group relative flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-[12px] font-medium px-5 py-2.5 rounded-full transition-all duration-300 tracking-wider shadow-[0_0_20px_-4px_rgba(220,38,38,0.6)] hover:shadow-[0_0_30px_-2px_rgba(220,38,38,0.9)]"
+            className="group relative hidden sm:flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-[12px] font-medium px-5 py-2.5 rounded-full transition-all duration-300 tracking-wider shadow-[0_0_20px_-4px_rgba(220,38,38,0.6)] hover:shadow-[0_0_30px_-2px_rgba(220,38,38,0.9)]"
           >
             <PhoneIcon className="w-3.5 h-3.5" />
             <span>Llamar</span>

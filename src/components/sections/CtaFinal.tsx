@@ -38,7 +38,7 @@ export function CtaFinal() {
             <span className="text-white/80">Presupuesto sin compromiso.</span>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-16">
+          <div className="hidden sm:flex flex-row gap-4 justify-center mb-16">
             <a
               href={telHref}
               data-magnetic

@@ -47,8 +47,10 @@ export function Contact() {
           </div>
         </div>
 
-        {/* ─── 3 cards: Teléfono · Ubicación · WhatsApp ─── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* ─── 3 cards: Teléfono · Ubicación · WhatsApp ───
+             Ocultas en móvil: la barra fija inferior ya ofrece Llamar/WhatsApp
+             y la dirección tiene su propia sección más abajo. */}
+        <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {/* PHONE */}
           <article
             className="group relative card-lift bg-stone-900 border border-stone-800 hover:border-red-500/40 rounded-3xl p-7 sm:p-8 overflow-hidden flex flex-col"
@@ -208,7 +210,7 @@ export function Contact() {
 
         {/* ─── Schedule strip ─── */}
         <article
-          className="relative mt-5 bg-stone-900 border border-stone-800 rounded-3xl p-6 sm:p-8 overflow-hidden"
+          className="relative sm:mt-5 bg-stone-900 border border-stone-800 rounded-3xl p-6 sm:p-8 overflow-hidden"
           data-animate="fade-up"
           style={{ transitionDelay: '0.24s' }}
         >

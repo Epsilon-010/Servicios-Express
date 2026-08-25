@@ -125,7 +125,7 @@ export function Location() {
 
             {/* Dirección destacada — gradient red brand */}
             <div
-              className="relative rounded-2xl p-6 mt-auto overflow-hidden text-white"
+              className="relative hidden sm:block rounded-2xl p-6 mt-auto overflow-hidden text-white"
               data-animate="fade-up"
               style={{ transitionDelay: `${mapSteps.length * 0.08}s` }}
             >

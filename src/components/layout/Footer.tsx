@@ -64,7 +64,7 @@ export function Footer() {
             </p>
             <a
               href={telHref}
-              className="flex items-center gap-2.5 text-white hover:text-red-300 text-base font-playfair transition-colors mb-2.5"
+              className="hidden sm:flex items-center gap-2.5 text-white hover:text-red-300 text-base font-playfair transition-colors mb-2.5"
             >
               <PhoneIcon className="w-4 h-4 text-red-400" />
               Llamar al taller
@@ -73,7 +73,7 @@ export function Footer() {
               href={whatsAppHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 text-white/70 hover:text-red-300 text-sm font-light transition-colors mb-4"
+              className="hidden sm:flex items-center gap-2.5 text-white/70 hover:text-red-300 text-sm font-light transition-colors mb-4"
             >
               <WhatsAppIcon className="w-4 h-4 text-red-400/80" />
               WhatsApp
