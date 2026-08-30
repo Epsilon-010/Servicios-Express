@@ -15,6 +15,31 @@ export const mapEmbedUrl =
 export const mapDirectionsUrl =
   'https://www.google.com/maps/dir/?api=1&destination=Auto+Servicio+Quevedo+Express,+Av.+Morelos+29,+San+Antonio+de+la+Cal,+Oaxaca'
 
+// Todos los números de contacto del taller (sección "Teléfonos")
+export const phones = [
+  {
+    number: '9511449292',
+    display: '951 144 9292',
+    label: 'Línea directa',
+    whatsapp: false,
+  },
+  {
+    number: '9516153525',
+    display: '951 615 3525',
+    label: 'Llamadas y WhatsApp',
+    whatsapp: true,
+  },
+  {
+    number: '9517688543',
+    display: '951 768 8543',
+    label: 'Taller',
+    whatsapp: false,
+  },
+] as const
+
+export const telHrefFor = (n: string) => `tel:${n}`
+export const whatsAppHrefFor = (n: string) => `https://wa.me/52${n}`
+
 export const business = {
   name: 'Auto Servicio Quevedo Express',
   shortName: 'Quevedo Express',

@@ -116,17 +116,17 @@ export function Footer() {
               href={developerWhatsAppHref}
               target="_blank"
               rel="noopener noreferrer"
-              title={`Sitio web por ${developer.name} · WhatsApp ${developer.phoneDisplay}`}
-              className="group inline-flex items-center gap-1.5 text-white/20 hover:text-emerald-400/80 text-[10px] tracking-[0.14em] font-light transition-colors duration-300"
+              title={`Web hecha por ${developer.name} · WhatsApp ${developer.phoneDisplay}`}
+              className="group mt-1.5 inline-flex flex-col items-center sm:items-start gap-1 text-white/70 hover:text-emerald-300 transition-colors duration-300"
             >
-              <span>
-                Sitio web por{' '}
-                <span className="font-playfair italic tracking-normal text-[11px]">
+              <span className="text-sm sm:text-base font-light tracking-wide">
+                Web hecha por{' '}
+                <span className="font-playfair italic font-medium text-white text-base sm:text-lg group-hover:text-emerald-300 transition-colors duration-300">
                   {developer.name}
                 </span>
               </span>
-              <WhatsAppIcon className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-              <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 group-hover:max-w-[9rem] group-hover:opacity-100 transition-all duration-500">
+              <span className="inline-flex items-center gap-2 text-emerald-400 group-hover:text-emerald-300 text-base sm:text-lg font-playfair tracking-tight transition-colors duration-300">
+                <WhatsAppIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
                 {developer.phoneDisplay}
               </span>
             </a>

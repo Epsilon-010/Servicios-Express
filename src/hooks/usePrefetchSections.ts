@@ -10,6 +10,7 @@ export function usePrefetchSections() {
     const prefetch = () => {
       void import('../components/sections/Services')
       void import('../components/sections/Contact')
+      void import('../components/sections/Phones')
       void import('../components/sections/Location')
       void import('../components/sections/CtaFinal')
     }
